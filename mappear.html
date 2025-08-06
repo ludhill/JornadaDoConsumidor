@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponto Cego | Mappear - Revele a Experiência Real do Seu Cliente</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1A0A3A; /* Fundo Escuro Principal */
+            color: #F8F8F8; /* Texto principal em branco/cinza claro */
+        }
+        /* Paleta de Cores Mappear */
+        .bg-mappear-dark { background-color: #1A0A3A; }
+        .text-mappear-dark { color: #1A0A3A; }
+        .bg-mappear-primary-blue { background-color: #00BFFF; } /* Azul Vibrante */
+        .text-mappear-primary-blue { color: #00BFFF; }
+        .bg-mappear-secondary-cyan { background-color: #00FFFF; } /* Ciano/Turquesa */
+        .text-mappear-secondary-cyan { color: #00FFFF; }
+        .bg-mappear-accent-purple { background-color: #6A0DAD; } /* Roxo Médio */
+        .text-mappear-accent-purple { color: #6A0DAD; }
+        .text-mappear-light { color: #F8F8F8; }
+        .border-mappear-primary-blue { border-color: #00BFFF; }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-600 { animation-delay: 0.6s; }
+        .animate-delay-800 { animation-delay: 0.8s; }
+        .animate-delay-1000 { animation-delay: 1s; }
+
+        /* Estilo para o modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #1A0A3A; /* Dark background */
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .close-button {
+            color: #F8F8F8;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #00BFFF;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-mappear-dark shadow-lg py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="https://placehold.co/100x50/1A0A3A/F8F8F8?text=Mappear+Logo" alt="Mappear Logo" class="h-12 w-auto rounded-lg">
+                <span class="ml-3 text-2xl font-bold text-mappear-light">Mappear</span>
+            </div>
+            <!-- Botão de Contato Rápido -->
+            <a href="#contact-form" class="bg-mappear-primary-blue text-white font-bold py-2 px-5 rounded-full shadow-md hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                Contato
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="bg-mappear-dark text-white py-20 md:py-32 text-center relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('https://placehold.co/1920x1080/1A0A3A/00BFFF?text=Background+Pattern'); background-size: cover; background-position: center;"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fadeIn">
+                O que seus olhos não veem pode estar custando caro.
+            </h1>
+            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-90 animate-fadeIn animate-delay-200">
+                A Mappear é mais do que uma agência. Nós vendemos resultado. E tudo começa revelando o que está invisível: a experiência real do seu cliente.
+            </p>
+            <button id="openModalBtn" class="bg-mappear-primary-blue text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105 animate-fadeIn animate-delay-400">
+                Solicitar Avaliação Confidencial
+            </button>
+        </div>
+    </section>
+
+    <!-- Explanation of Service Section -->
+    <section id="service-explanation" class="py-16 md:py-24 bg-mappear-dark text-mappear-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fadeIn">
+                Ponto Cego: O Diagnóstico que Transforma
+            </h2>
+            <div class="max-w-4xl mx-auto text-center animate-fadeIn animate-delay-200">
+                <p class="text-lg leading-relaxed mb-6">
+                    Muitas empresas perdem clientes e oportunidades por não enxergarem as falhas na própria operação. O serviço **Ponto Cego** da Mappear atua como seu cliente oculto, revelando a experiência real que sua empresa oferece.
+                </p>
+                <p class="text-lg leading-relaxed mb-6">
+                    **O Ponto Cego entra como diagnóstico. MAPPEAR entra como solução completa.**
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Identificamos os gargalos, as dores do cliente e as oportunidades de melhoria que estão invisíveis para você, mas que impactam diretamente seus resultados.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section id="how-it-works" class="py-16 md:py-24 bg-mappear-accent-purple text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fadeIn">Como Funciona: 4 Passos Simples</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-mappear-dark p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 animate-fadeIn animate-delay-200">
+                    <div class="text-mappear-primary-blue mb-4 text-5xl font-extrabold text-center">1</div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Briefing Detalhado</h3>
+                    <p class="text-gray-300 text-center">
+                        Entendemos seus objetivos e as áreas que você deseja investigar na experiência do cliente.
+                    </p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-mappear-dark p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 animate-fadeIn animate-delay-400">
+                    <div class="text-mappear-primary-blue mb-4 text-5xl font-extrabold text-center">2</div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Atuação do Cliente Oculto</h3>
+                    <p class="text-gray-300 text-center">
+                        Nossos especialistas atuam como clientes reais, avaliando cada ponto de contato da sua empresa.
+                    </p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-mappear-dark p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 animate-fadeIn animate-delay-600">
+                    <div class="text-mappear-primary-blue mb-4 text-5xl font-extrabold text-center">3</div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Relatório Confidencial</h3>
+                    <p class="text-gray-300 text-center">
+                        Você recebe um relatório detalhado com o diagnóstico, evidências e recomendações claras.
+                    </p>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-mappear-dark p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 animate-fadeIn animate-delay-800">
+                    <div class="text-mappear-primary-blue mb-4 text-5xl font-extrabold text-center">4</div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Plano de Ação MAPPEAR</h3>
+                    <p class="text-gray-300 text-center">
+                        Apresentamos soluções personalizadas para transformar os pontos fracos em seus maiores diferenciais.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 md:py-24 bg-mappear-dark text-mappear-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fadeIn">Benefícios para a Sua Empresa</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="flex items-start bg-mappear-accent-purple p-6 rounded-xl shadow-md animate-fadeIn animate-delay-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-mappear-secondary-cyan mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Aumento da Satisfação do Cliente</h3>
+                        <p class="text-gray-300">Identifique e corrija falhas antes que elas afastem seus clientes.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-mappear-accent-purple p-6 rounded-xl shadow-md animate-fadeIn animate-delay-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-mappear-secondary-cyan mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Otimização de Processos</h3>
+                        <p class="text-gray-300">Descubra ineficiências e otimize o fluxo de trabalho da sua equipe.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-mappear-accent-purple p-6 rounded-xl shadow-md animate-fadeIn animate-delay-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-mappear-secondary-cyan mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2h-1a2 2 0 01-2-2V8a2 2 0 012-2h1zm0 0V5a2 2 0 00-2-2h-1a2 2 0 00-2 2v3m5 0h-1a2 2 0 00-2 2v2a2 2 0 002 2h1a2 2 0 002-2v-2a2 2 0 00-2-2z" />
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Aumento de Vendas e Lucratividade</h3>
+                        <p class="text-gray-300">Transforme a experiência do cliente em mais conversões e fidelização.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-mappear-accent-purple p-6 rounded-xl shadow-md animate-fadeIn animate-delay-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-mappear-secondary-cyan mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Decisões Baseadas em Dados Reais</h3>
+                        <p class="text-gray-300">Tenha informações precisas para tomar decisões estratégicas e assertivas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24 bg-mappear-dark text-mappear-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fadeIn">O Que Nossos Clientes Dizem</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-mappear-accent-purple p-8 rounded-xl shadow-lg animate-fadeIn animate-delay-200">
+                    <p class="text-lg italic mb-6">
+                        "O serviço Ponto Cego da Mappear foi um divisor de águas para nossa empresa. Descobrimos falhas que jamais imaginaríamos e pudemos agir rapidamente. O resultado foi um aumento significativo na satisfação dos nossos clientes!"
+                    </p>
+                    <p class="font-semibold text-mappear-secondary-cyan">- Ana Paula, CEO da Empresa X</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-mappear-accent-purple p-8 rounded-xl shadow-lg animate-fadeIn animate-delay-400">
+                    <p class="text-lg italic mb-6">
+                        "A clareza do relatório do Ponto Cego nos permitiu otimizar nossos processos de atendimento. A Mappear não só diagnosticou, mas também nos guiou para as soluções ideais. Recomendo fortemente!"
+                    </p>
+                    <p class="font-semibold text-mappear-secondary-cyan">- João Silva, Diretor de Operações da Startup Y</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet Section -->
+    <section id="lead-magnet" class="py-16 md:py-24 bg-mappear-dark text-mappear-light text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 animate-fadeIn">Desvende os Segredos da Experiência do Cliente</h2>
+            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto animate-fadeIn animate-delay-200">
+                Baixe agora nosso **Exemplo de Relatório Ponto Cego** e veja como identificamos e resolvemos problemas reais.
+            </p>
+            <a href="https://placehold.co/600x400/00BFFF/FFFFFF?text=Exemplo+de+Relatório+Ponto+Cego" download="Exemplo_Relatorio_Ponto_Cego_Mappear.pdf" class="bg-mappear-secondary-cyan text-mappear-dark font-bold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105 animate-fadeIn animate-delay-400">
+                Baixar Relatório Gratuito
+            </a>
+            <p class="text-sm text-gray-400 mt-4 animate-fadeIn animate-delay-600">
+                (PDF Gratuito - Download Imediato)
+            </p>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact Form Section -->
+    <section id="contact-form" class="py-16 md:py-24 bg-mappear-dark text-mappear-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fadeIn">
+                Pronto para Revelar Seus Pontos Cegos?
+            </h2>
+            <div class="max-w-xl mx-auto bg-mappear-accent-purple p-8 rounded-xl shadow-lg animate-fadeIn animate-delay-200">
+                <p class="text-lg text-center mb-6">Preencha o formulário abaixo e nossa equipe entrará em contato para agendar sua **Avaliação Confidencial**.</p>
+                <form id="qualificationForm">
+                    <div class="mb-6">
+                        <label for="companyName" class="block text-mappear-light text-sm font-bold mb-2">Nome da Empresa:</label>
+                        <input type="text" id="companyName" name="companyName" class="shadow appearance-none border border-mappear-primary-blue rounded-lg w-full py-3 px-4 text-mappear-dark leading-tight focus:outline-none focus:ring-2 focus:ring-mappear-secondary-cyan bg-gray-200" placeholder="Sua Empresa" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="contactPerson" class="block text-mappear-light text-sm font-bold mb-2">Nome do Contato:</label>
+                        <input type="text" id="contactPerson" name="contactPerson" class="shadow appearance-none border border-mappear-primary-blue rounded-lg w-full py-3 px-4 text-mappear-dark leading-tight focus:outline-none focus:ring-2 focus:ring-mappear-secondary-cyan bg-gray-200" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-mappear-light text-sm font-bold mb-2">Email Profissional:</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border border-mappear-primary-blue rounded-lg w-full py-3 px-4 text-mappear-dark leading-tight focus:outline-none focus:ring-2 focus:ring-mappear-secondary-cyan bg-gray-200" placeholder="seu.email@empresa.com" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="phone" class="block text-mappear-light text-sm font-bold mb-2">Telefone (WhatsApp):</label>
+                        <input type="tel" id="phone" name="phone" class="shadow appearance-none border border-mappear-primary-blue rounded-lg w-full py-3 px-4 text-mappear-dark leading-tight focus:outline-none focus:ring-2 focus:ring-mappear-secondary-cyan bg-gray-200" placeholder="(XX) XXXXX-XXXX" required>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-mappear-primary-blue text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                            Solicitar Avaliação
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-mappear-dark text-white py-8 border-t border-mappear-accent-purple">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Mappear. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="text-gray-400 hover:text-mappear-secondary-cyan transition duration-300">Privacidade</a>
+                <a href="#" class="text-gray-400 hover:text-mappear-secondary-cyan transition duration-300">Termos de Uso</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for "Solicitar Avaliação Confidencial" -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 class="text-3xl font-bold text-center text-mappear-light mb-6">Solicitar Avaliação Confidencial</h2>
+            <p class="text-lg text-center text-gray-300 mb-8">
+                Preencha seus dados e entraremos em contato para agendar sua avaliação gratuita do Ponto Cego.
+            </p>
+            <form id="modalForm">
+                <div class="mb-6">
+                    <label for="modalCompanyName" class="block text-mappear-light text-sm font-bold mb-2">Nome da Empresa:</label>
+                    <input type="text" id="modalCompanyName" name="companyName" class="shadow appearance-none border border-mappear-primary-blue rounded-lg w-full py-3 px-4 text-mappear-dark leading-tight focus:outline-none focus:ring-2 focus:ring-mappear-secondary-cyan bg-gray-200" placeholder="Sua Empresa" required>
+                </div>
+                <div class="mb-6">
+                    <label for="modalContactPerson" class="block text-mappear-light text-sm font-bold mb-2">Nome do Contato:</label>
+                    <input type="text" id="modalContactPerson" name="contactPerson" class="shadow appearance-none border border-mappear-primary-blue rounded-lg w-full py-3 px-4 text-mappear-dark leading-tight focus:outline-none focus:ring-2 focus:ring-mappear-secondary-cyan bg-gray-200" placeholder="Seu Nome" required>
+                </div>
+                <div class="mb-6">
+                    <label for="modalEmail" class="block text-mappear-light text-sm font-bold mb-2">Email Profissional:</label>
+                    <input type="email" id="modalEmail" name="email" class="shadow appearance-none border border-mappear-primary-blue rounded-lg w-full py-3 px-4 text-mappear-dark leading-tight focus:outline-none focus:ring-2 focus:ring-mappear-secondary-cyan bg-gray-200" placeholder="seu.email@empresa.com" required>
+                </div>
+                <div class="mb-6">
+                    <label for="modalPhone" class="block text-mappear-light text-sm font-bold mb-2">Telefone (WhatsApp):</label>
+                    <input type="tel" id="modalPhone" name="phone" class="shadow appearance-none border border-mappear-primary-blue rounded-lg w-full py-3 px-4 text-mappear-dark leading-tight focus:outline-none focus:ring-2 focus:ring-mappear-secondary-cyan bg-gray-200" placeholder="(XX) XXXXX-XXXX" required>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="bg-mappear-primary-blue text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                        Enviar Solicitação
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir o modal
+        document.getElementById('openModalBtn').onclick = function() {
+            document.getElementById('contactModal').style.display = 'flex';
+        }
+
+        // Função para fechar o modal clicando no 'x'
+        document.getElementsByClassName('close-button')[0].onclick = function() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // Função para fechar o modal clicando fora dele
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('contactModal')) {
+                document.getElementById('contactModal').style.display = 'none';
+            }
+        }
+
+        // Simulação de envio de formulário
+        document.getElementById('qualificationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne o envio padrão do formulário
+            // Aqui você integraria com WhatsApp Business / CRM
+            console.log('Formulário de qualificação enviado:', {
+                companyName: document.getElementById('companyName').value,
+                contactPerson: document.getElementById('contactPerson').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            });
+            alert('Sua solicitação foi enviada com sucesso! Entraremos em contato em breve.');
+            document.getElementById('qualificationForm').reset(); // Limpa o formulário
+        });
+
+        document.getElementById('modalForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne o envio padrão do formulário
+            // Aqui você integraria com WhatsApp Business / CRM
+            console.log('Formulário do modal enviado:', {
+                companyName: document.getElementById('modalCompanyName').value,
+                contactPerson: document.getElementById('modalContactPerson').value,
+                email: document.getElementById('modalEmail').value,
+                phone: document.getElementById('modalPhone').value
+            });
+            alert('Sua solicitação foi enviada com sucesso! Entraremos em contato em breve.');
+            document.getElementById('modalForm').reset(); // Limpa o formulário
+            document.getElementById('contactModal').style.display = 'none'; // Fecha o modal
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
